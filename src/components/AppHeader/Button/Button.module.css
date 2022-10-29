@@ -1,0 +1,13 @@
+.button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  height: 56px;
+  background: none;
+  border: 0;
+}
+
+.icon {
+  display: flex;
+}
+

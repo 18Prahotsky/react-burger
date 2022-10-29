@@ -1,0 +1,43 @@
+.burgerConstructor {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  padding-top: 100px;
+}
+
+.constructorItemOther {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scrollStyle {
+  max-height: calc(100vh - 536px);
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.burgerComponent {
+  padding-left: 16px;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.totalPrice {
+  display: flex;
+  margin: 40px 16px 52px 16px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

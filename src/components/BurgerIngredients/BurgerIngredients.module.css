@@ -1,0 +1,29 @@
+.burgerIngredients {
+  width: 600px;
+  padding-top: 40px;
+}
+.title {
+  margin-bottom: 24px;
+  margin-left: -16px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 32px;
+  column-gap: 24px;
+}
+
+.cardsBlock {
+  padding-top: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.mainTitle {
+  margin-bottom: 20px;
+}
+
+.scrollStyle {
+  height: calc(100vh - 284px);
+  overflow: scroll;
+}
