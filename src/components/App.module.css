@@ -1,0 +1,11 @@
+.app {
+max-height: max-content;
+}
+
+
+.main {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+}
