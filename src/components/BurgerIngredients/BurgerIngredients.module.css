@@ -26,4 +26,5 @@
 .scrollStyle {
   height: calc(100vh - 284px);
   overflow: scroll;
+  overflow-x:hidden;
 }

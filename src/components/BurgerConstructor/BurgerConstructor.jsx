@@ -9,53 +9,57 @@ import {
 
 import data from "../../utils/data";
 
-
 const BurgerConstructor = () => {
-  let itemBunTopConstructor = data.map(
-    (dataItem) =>
-      dataItem._id === "60666c42cc7b410027a1a9b1" && (
-        <ConstructorElement
-          type="top"
-          isLocked={true}
-          text={dataItem.name}
-          price={dataItem.price}
-          thumbnail={dataItem.image}
-        />
-      )
-  );
+  const itemBunConstructor = data.find((item) => item.type === "bun");
+  const itemMainConstructor = data.filter((item) => item.type !== "bun");
 
-  let itemOtherConstructor = data.map(
-    (dataItem) =>
-      dataItem._id !== "60666c42cc7b410027a1a9b1" && (
-        <div className={s.itemOtherConstructor}>
-          <DragIcon type="primary" />
-          <ConstructorElement
-            text={dataItem.name}
-            price={dataItem.price}
-            thumbnail={dataItem.image}
-          />
-        </div>
-      )
-  );
-  let itemBunButtonConstructor = data.map(
-    (dataItem) =>
-      dataItem._id === "60666c42cc7b410027a1a9b1" && (
+  const itemBunTopConstructor = (data) => {
+    return (
+      <ConstructorElement
+        type="top"
+        isLocked={true}
+        text={data.name}
+        price={data.price}
+        thumbnail={data.image}
+      />
+    );
+  };
+
+  const itemBunBottomConstructor = (data) => {
+    return (
+      <ConstructorElement
+        type="bottom"
+        isLocked={true}
+        text={data.name}
+        price={data.price}
+        thumbnail={data.image}
+      />
+    );
+  };
+
+  const itemOtherConstructor = (data) => {
+    return (
+      <div className={s.itemOtherConstructor}>
+        <DragIcon type="primary" />
         <ConstructorElement
-          type="bottom"
-          isLocked={true}
-          text={dataItem.name}
-          price={dataItem.price}
-          thumbnail={dataItem.image}
+          text={data.name}
+          price={data.price}
+          thumbnail={data.image}
         />
-      )
+      </div>
+    );
+  };
+
+  const itemsMainConstructor = itemMainConstructor.map((item) =>
+    itemOtherConstructor(item)
   );
 
   return (
     <section className={s.burgerConstructor}>
       <div className={s.burgerComponent}>
-        {itemBunTopConstructor}
-        <div className={s.scrollStyle}>{itemOtherConstructor}</div>
-        {itemBunButtonConstructor}
+        {itemBunTopConstructor(itemBunConstructor)}
+        <div className={s.scrollStyle}>{itemsMainConstructor}</div>
+        {itemBunBottomConstructor(itemBunConstructor)}
       </div>
       <div className={s.totalPrice}>
         <div className={s.price}>
@@ -69,8 +73,5 @@ const BurgerConstructor = () => {
     </section>
   );
 };
-
-
-
 
 export default BurgerConstructor;

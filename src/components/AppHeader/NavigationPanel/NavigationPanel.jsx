@@ -15,9 +15,9 @@ const NavigationPanel = () => {
         <Button name={"Конструктор"} icon={<BurgerIcon type="secondary" />} />
         <Button name={"Лента заказов"} icon={<ListIcon type="secondary" />} />
       </div>
-      <div className={s.logo}>
+      <a href="#" className={s.logo}>
         <Logo />
-      </div>
+      </a>
       <div className={s.button}>
         <Button
           name={"Личный кабинет"}
