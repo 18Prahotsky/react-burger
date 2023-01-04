@@ -4,17 +4,23 @@ import "@ya.praktikum/react-developer-burger-ui-components";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
 const Tabs = () => {
-  const [current, setCurrent] = React.useState("one");
+  const [current, setCurrent] = useState("buns");
+
+  const onTabClick = (tab) => {
+    setCurrent(tab);
+    const element = document.getElementById(tab);
+    if (element) element.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className={s.tabs}>
-      <Tab value="bun" active={current === "bun"} onClick={setCurrent}>
+      <Tab value="buns" active={current === "buns"} onClick={onTabClick}>
         Булки
       </Tab>
-      <Tab value="sauce" active={current === "sauce"} onClick={setCurrent}>
+      <Tab value="sauces" active={current === "sauces"} onClick={onTabClick}>
         Соусы
       </Tab>
-      <Tab value="main" active={current === "main"} onClick={setCurrent}>
+      <Tab value="mains" active={current === "mains"} onClick={onTabClick}>
         Начинка
       </Tab>
     </div>

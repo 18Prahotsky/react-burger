@@ -23,3 +23,7 @@
   left: 50%;
   top: 50%;
 }
+
+.active {
+  color:#F2F2F3;
+}

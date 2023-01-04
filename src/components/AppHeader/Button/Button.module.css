@@ -5,9 +5,9 @@
   height: 56px;
   background: none;
   border: 0;
+  text-decoration: none;
 }
 
 .icon {
   display: flex;
 }
-

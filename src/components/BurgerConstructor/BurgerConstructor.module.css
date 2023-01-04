@@ -14,10 +14,25 @@
 .scrollStyle {
   max-height: calc(100vh - 536px);
   overflow: scroll;
-  overflow-x:hidden;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-right: -16px;
+  padding-right: 8px;
+}
+
+.scrollStyle::-webkit-scrollbar {
+  width: 8px; /* ширина всей полосы прокрутки */
+}
+
+.scrollStyle::-webkit-scrollbar-track {
+  background: #2f2f37; /* цвет зоны отслеживания */
+}
+
+.scrollStyle::-webkit-scrollbar-thumb {
+  background-color: #8585ad; /* цвет бегунка */
+  border: 3px solid #8585ad; /* отступ вокруг бегунка */
 }
 
 .burgerComponent {

@@ -2,18 +2,39 @@ import s from "./BurgerIngredients.module.css";
 import "@ya.praktikum/react-developer-burger-ui-components";
 import Tabs from "./Tabs/Tabs";
 import Card from "./Card/Card";
-import data from "../../utils/data";
-import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
+import PropTypes from "prop-types";
+import { dataPropTypes } from "../../utils/propTypes";
+import { useMemo, useState } from "react";
+import Modal from "../Modal/Modal";
+import IngredientsDetails from "../IngredientDetails/IngredientsDetails";
 
-const BurgerIngredients = () => {
-  const cardsDataBun = data.filter((dataItem) => dataItem.type === "bun");
-  const cardsBun = cardsDataBun.map((dataItem) => <Card data={dataItem} />);
+const BurgerIngredients = ({ data }) => {
 
-  const cardsDataMain = data.filter((dataItem) => dataItem.type === "main");
-  const cardsMain = cardsDataMain.map((dataItem) => <Card data={dataItem} />);
+  const cardsDataBun = useMemo(
+    () => data.filter((dataItem) => dataItem.type === "bun"),
+    [data]
+  );
+  const cardsDataMain = useMemo(
+    () => data.filter((dataItem) => dataItem.type === "main"),
+    [data]
+  );
+  const cardsDataSauce = useMemo(
+    () => data.filter((dataItem) => dataItem.type === "sauce"),
+    [data]
+  );
 
-  const cardsDataSauce = data.filter((dataItem) => dataItem.type === "sauce");
-  const cardsSauce = cardsDataSauce.map((dataItem) => <Card data={dataItem} />);
+  const [ingredientInModal, setIngredientInModal] = useState(false);
+  const [itemDataInModal, setItemDataInModal] = useState({});
+
+  const openModal = (item) => {
+    setItemDataInModal(item);
+    setIngredientInModal(true);
+  };
+
+  const closeModal = () => {
+    setItemDataInModal({});
+    setIngredientInModal(false);
+  };
 
   return (
     <section className={s.burgerIngredients}>
@@ -22,21 +43,54 @@ const BurgerIngredients = () => {
       </h2>
       <Tabs />
       <div className={s.scrollStyle}>
-        <div className={s.cardsBlock}>
+        <div className={s.cardsBlock} id="buns">
           <h3 className={`${s.title} text text_type_main-medium`}>Булки</h3>
-          <div className={s.cards}>{cardsBun}</div>
+          <div className={s.cards}>
+            {cardsDataBun.map((dataItem) => (
+              <Card
+                key={dataItem._id}
+                data={dataItem}
+                onClickCard={openModal}
+              />
+            ))}
+          </div>
         </div>
-        <div className={s.cardsBlock}>
+        <div className={s.cardsBlock} id="sauces">
           <h3 className={`${s.title} text text_type_main-medium`}>Соусы</h3>
-          <div className={s.cards}>{cardsSauce}</div>
+          <div className={s.cards}>
+            {cardsDataSauce.map((dataItem) => (
+              <Card
+                key={dataItem._id}
+                data={dataItem}
+                onClickCard={openModal}
+              />
+            ))}
+          </div>
         </div>
-        <div className={s.cardsBlock}>
+        <div className={s.cardsBlock} id="mains">
           <h3 className={`${s.title} text text_type_main-medium`}>Начинки</h3>
-          <div className={s.cards}>{cardsMain}</div>
+          <div className={s.cards}>
+            {cardsDataMain.map((dataItem) => (
+              <Card
+                key={dataItem._id}
+                data={dataItem}
+                onClickCard={openModal}
+              />
+            ))}
+          </div>
         </div>
       </div>
+      {ingredientInModal && (
+        <Modal description={"Детали ингредиента"} onClose={closeModal}>
+          <IngredientsDetails data={itemDataInModal} />
+        </Modal>
+      )}
     </section>
   );
 };
 
 export default BurgerIngredients;
+
+BurgerIngredients.propTypes = {
+  data: PropTypes.arrayOf(dataPropTypes.isRequired).isRequired,
+};
