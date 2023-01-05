@@ -8,17 +8,24 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import { dataPropTypes } from "../../utils/propTypes";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../OrderDetails/OrderDetails";
 
 const BurgerConstructor = ({ data }) => {
-  const itemBunConstructor = data.find((item) => item.type === "bun");
-  const itemOtherConstructor = data.filter((item) => item.type !== "bun");
+  const itemBunConstructor = useMemo(
+    () => data.find((item) => item.type === "bun"),
+    [data]
+  );
+
+  const itemOtherConstructor = useMemo(
+    () => data.filter((item) => item.type !== "bun"),
+    [data]
+  );
 
   const [orderInModal, setOrderInModal] = useState(false);
 
-  const openModal = (item) => {
+  const openModal = () => {
     setOrderInModal(true);
   };
 
@@ -33,7 +40,7 @@ const BurgerConstructor = ({ data }) => {
           <ConstructorElement
             type="top"
             isLocked={true}
-            text={itemBunConstructor.name}
+            text={`${itemBunConstructor.name} (верх)`}
             price={itemBunConstructor.price}
             thumbnail={itemBunConstructor.image}
           />
@@ -54,7 +61,7 @@ const BurgerConstructor = ({ data }) => {
           <ConstructorElement
             type="bottom"
             isLocked={true}
-            text={itemBunConstructor.name}
+            text={`${itemBunConstructor.name} (низ)`}
             price={itemBunConstructor.price}
             thumbnail={itemBunConstructor.image}
           />
@@ -65,7 +72,12 @@ const BurgerConstructor = ({ data }) => {
           <p className={`${s.total} text text_type_main-large`}>200</p>
           <CurrencyIcon type="primary" />
         </div>
-        <Button htmlType="button" type="primary" size="medium" onClick={openModal}>
+        <Button
+          htmlType="button"
+          type="primary"
+          size="medium"
+          onClick={openModal}
+        >
           Оформить заказ
         </Button>
       </div>

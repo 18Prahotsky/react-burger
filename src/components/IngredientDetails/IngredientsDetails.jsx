@@ -1,12 +1,11 @@
 import s from "./IngredientsDetails.module.css";
 import "@ya.praktikum/react-developer-burger-ui-components";
-import PropTypes from "prop-types";
 import { dataPropTypes } from "../../utils/propTypes";
 
 const IngredientsDetails = ({ data }) => {
   return (
     <div className={s.content}>
-      <img src={data.image} className={`${s.image}`} />
+      <img src={data.image} className={`${s.image}`} alt={data.name} />
       <p className={`${s.title} text text_type_main-medium mt-4`}>
         {data.name}
       </p>

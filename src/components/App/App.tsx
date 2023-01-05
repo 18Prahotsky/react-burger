@@ -4,18 +4,15 @@ import AppHeader from "../AppHeader/AppHeader";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import PreLoader from "../PreLoader/PreLoader";
-import Modal from "../Modal/Modal";
+import { getIngredients } from "../../utils/burgerApi";
 
 function App() {
   const [state, setState] = useState({ data: [] });
   const [loading, setLoading] = useState(true);
 
-  const urlData = "https://norma.nomoreparties.space/api/ingredients";
-
   useEffect(() => {
     const fetchData = () => {
-      fetch(urlData)
-        .then((response) => response.json())
+      getIngredients()
         .then((result) => {
           setState(result);
         })

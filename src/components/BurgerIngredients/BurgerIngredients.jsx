@@ -24,7 +24,7 @@ const BurgerIngredients = ({ data }) => {
   );
 
   const [ingredientInModal, setIngredientInModal] = useState(false);
-  const [itemDataInModal, setItemDataInModal] = useState({});
+  const [itemDataInModal, setItemDataInModal] = useState(null);
 
   const openModal = (item) => {
     setItemDataInModal(item);
@@ -32,7 +32,7 @@ const BurgerIngredients = ({ data }) => {
   };
 
   const closeModal = () => {
-    setItemDataInModal({});
+    setItemDataInModal(null);
     setIngredientInModal(false);
   };
 

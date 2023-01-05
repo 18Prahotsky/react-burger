@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { dataPropTypes } from "../../../utils/propTypes";
 
 const Card = ({ data, onClickCard }) => {
+
   return (
     <div
       className={s.card}

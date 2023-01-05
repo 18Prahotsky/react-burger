@@ -13,7 +13,7 @@ const OrderDetails = ({ number }) => {
       <p className={`${s.title} text text_type_main-medium mt-8`}>
         индентификатор заказа
       </p>
-      <img src={doneImage} className={`${s.image}`} />
+      <img src={doneImage} className={`${s.image}`} alt='done' />
       <p className={`${s.start} text text_type_main-default mt-15`}>
         Ваш заказ начали готовить
       </p>

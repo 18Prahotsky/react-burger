@@ -5,7 +5,6 @@ import "@ya.praktikum/react-developer-burger-ui-components";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import { dataPropTypes } from "../../utils/propTypes";
 
 const modalRoot = document.getElementById("modals");
 
@@ -44,5 +43,5 @@ export default Modal;
 Modal.propTypes = {
   children: PropTypes.element.isRequired,
   onClose: PropTypes.func.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
