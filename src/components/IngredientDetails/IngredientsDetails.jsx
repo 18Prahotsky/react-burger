@@ -1,5 +1,6 @@
 import s from "./IngredientsDetails.module.css";
 import "@ya.praktikum/react-developer-burger-ui-components";
+
 import { dataPropTypes } from "../../utils/propTypes";
 
 const IngredientsDetails = ({ data }) => {

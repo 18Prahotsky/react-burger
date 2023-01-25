@@ -8,6 +8,7 @@ export const getIngredients = () => {
   return fetch(`${BURGER_API_URL}/ingredients`)
     .then(checkResponse)
     .then((data) => {
+        console.log(data)
       if (data?.success) return data;
       return Promise.reject(data);
     });
