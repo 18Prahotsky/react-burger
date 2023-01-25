@@ -1,0 +1,45 @@
+.burgerIngredients {
+  width: 600px;
+  padding-top: 40px;
+}
+.title {
+  margin-bottom: 24px;
+  margin-left: -16px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 32px;
+  column-gap: 24px;
+}
+
+.cardsBlock {
+  padding-top: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.mainTitle {
+  margin-bottom: 20px;
+}
+
+.scrollStyle {
+  height: calc(100vh - 284px);
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-right: -16px;
+  padding-right: 8px;
+}
+
+.scrollStyle::-webkit-scrollbar {
+  width: 8px; /* ширина всей полосы прокрутки */
+}
+
+.scrollStyle::-webkit-scrollbar-track {
+  background: #2f2f37; /* цвет зоны отслеживания */
+}
+
+.scrollStyle::-webkit-scrollbar-thumb {
+  background-color: #8585ad; /* цвет бегунка */
+  border: 3px solid #8585ad; /* отступ вокруг бегунка */
+}
